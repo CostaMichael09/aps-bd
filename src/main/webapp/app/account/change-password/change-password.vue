@@ -4,7 +4,7 @@
       <div class="col-md-8 toastify-container">
         <h2 v-if="account" id="password-title">
           <span>
-            Password for [<strong>{{ username }}</strong
+            Senha para [<strong>{{ username }}</strong
             >]</span
           >
         </h2>

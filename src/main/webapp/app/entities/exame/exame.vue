@@ -45,9 +45,9 @@
         </thead>
         <tbody>
           <tr v-for="exame in exames" :key="exame.id" data-cy="entityTable">
-            <td>
-              <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }">{{ exame.id }}</router-link>
-            </td>
+<!--            <td>-->
+<!--              <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }">{{ exame.id }}</router-link>-->
+<!--            </td>-->
             <td>{{ exame.tipo }}</td>
             <td>{{ exame.data | formatDate }}</td>
             <td>{{ exame.nomedomedico }}</td>

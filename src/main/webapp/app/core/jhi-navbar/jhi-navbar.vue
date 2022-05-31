@@ -59,7 +59,7 @@
 <!--          </b-dropdown-item>-->
           <b-dropdown-item to="/admin/configuration" active-class="active">
            <font-awesome-icon icon="cogs" />
-           <span>Configuration</span>
+           <span>Configuração</span>
           </b-dropdown-item>
 <!--          <b-dropdown-item to="/admin/logs" active-class="active">-->
 <!--            <font-awesome-icon icon="tasks" />-->
