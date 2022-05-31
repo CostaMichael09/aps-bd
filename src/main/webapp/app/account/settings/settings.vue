@@ -4,7 +4,7 @@
       <div class="col-md-8 toastify-container">
         <h2 v-if="username" id="settings-title">
           <span>
-            User settings for [
+            Usando configuração para [
             <strong>
               {{ username }}
             </strong>
@@ -13,16 +13,16 @@
         </h2>
 
         <div class="alert alert-success" role="alert" v-if="success">
-          <strong>Settings saved!</strong>
+          <strong>Configuração salva!</strong>
         </div>
 
         <div class="alert alert-danger" role="alert" v-if="errorEmailExists">
-          <strong>Email is already in use!</strong> Please choose another one.
+          <strong>o e-mail já está sendo usado !</strong> por favor escolha outro.
         </div>
 
         <form name="form" id="settings-form" role="form" v-on:submit.prevent="save()" v-if="settingsAccount" novalidate>
           <div class="form-group">
-            <label class="form-control-label" for="firstName">First Name</label>
+            <label class="form-control-label" for="firstName">Primeiro nome</label>
             <input
               type="text"
               class="form-control"
@@ -36,17 +36,17 @@
               data-cy="firstname"
             />
             <div v-if="$v.settingsAccount.firstName.$anyDirty && $v.settingsAccount.firstName.$invalid">
-              <small class="form-text text-danger" v-if="!$v.settingsAccount.firstName.required"> Your first name is required. </small>
+              <small class="form-text text-danger" v-if="!$v.settingsAccount.firstName.required"> Primeiro nome é obrigatorio. </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.firstName.minLength">
-                Your first name is required to be at least 1 character.
+                Seu primeiro nome deve ter pelo menos 1 caractere .
               </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.firstName.maxLength">
-                Your first name cannot be longer than 50 characters.
+                Seu primeiro nome não pode ter mais que 50 caractere
               </small>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="lastName">Last Name</label>
+            <label class="form-control-label" for="lastName">Sobrenome</label>
             <input
               type="text"
               class="form-control"
@@ -62,10 +62,10 @@
             <div v-if="$v.settingsAccount.lastName.$anyDirty && $v.settingsAccount.lastName.$invalid">
               <small class="form-text text-danger" v-if="!$v.settingsAccount.lastName.required"> Your last name is required. </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.lastName.minLength">
-                Your last name is required to be at least 1 character.
+                Seu sobrenome deve ter pelo menos 1 caractere.
               </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.lastName.maxLength">
-                Your last name cannot be longer than 50 characters.
+                Seu sobrenome não pode ter mais que 50 caractere.
               </small>
             </div>
           </div>
@@ -85,13 +85,13 @@
               data-cy="email"
             />
             <div v-if="$v.settingsAccount.email.$anyDirty && $v.settingsAccount.email.$invalid">
-              <small class="form-text text-danger" v-if="!$v.settingsAccount.email.required"> Your email is required. </small>
-              <small class="form-text text-danger" v-if="!$v.settingsAccount.email.email"> Your email is invalid. </small>
+              <small class="form-text text-danger" v-if="!$v.settingsAccount.email.required"> Email obrigatorio. </small>
+              <small class="form-text text-danger" v-if="!$v.settingsAccount.email.email"> Email invalido. </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.email.minLength">
-                Your email is required to be at least 5 characters.
+                Seu email deve ter pelo menos 1 caractere.
               </small>
               <small class="form-text text-danger" v-if="!$v.settingsAccount.email.maxLength">
-                Your email cannot be longer than 100 characters.
+                Seu email não pode ter mais que 50 caractere.
               </small>
             </div>
           </div>
@@ -101,7 +101,7 @@
               <option v-for="(language, key) in languages" :value="key" :key="`lang-${key}`">{{ language.name }}</option>
             </select>
           </div>
-          <button type="submit" :disabled="$v.settingsAccount.$invalid" class="btn btn-primary" data-cy="submit">Save</button>
+          <button type="submit" :disabled="$v.settingsAccount.$invalid" class="btn btn-primary" data-cy="submit">Salvar</button>
         </form>
       </div>
     </div>

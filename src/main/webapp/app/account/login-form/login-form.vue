@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <b-alert show data-cy="loginError" variant="danger" v-if="authenticationError">
-          <strong>Failed to sign in!</strong> Please check your credentials and try again.
+          <strong>Falha ao entrar!</strong> Check suas credenciais e tente novamente.
         </b-alert>
       </div>
       <div class="col-md-8">
@@ -33,24 +33,24 @@
             </b-form-input>
           </b-form-group>
           <b-form-checkbox id="rememberMe" name="rememberMe" v-model="rememberMe" checked>
-            <span>Remember me</span>
+            <span>Lembrar-me</span>
           </b-form-checkbox>
           <div>
-            <b-button data-cy="submit" type="submit" variant="primary">Sign in</b-button>
+            <b-button data-cy="submit" type="submit" variant="primary">Entrar</b-button>
           </div>
         </b-form>
         <p></p>
         <div>
           <b-alert show variant="warning">
             <b-link :to="'/account/reset/request'" class="alert-link" data-cy="forgetYourPasswordSelector"
-              >Did you forget your password?</b-link
+              >Esqueceu a senha?</b-link
             >
           </b-alert>
         </div>
         <div>
           <b-alert show variant="warning">
-            <span>You don't have an account yet?</span>
-            <b-link :to="'/register'" class="alert-link">Register a new account</b-link>
+            <span>Está sem acesso?</span>
+            <b-link :to="'/register'" class="alert-link">Registre nova conta</b-link>
           </b-alert>
         </div>
       </div>

@@ -1,13 +1,13 @@
-<template>
-  <div class="ribbon" v-if="ribbonEnabled">
-    <a href="">{{ ribbonEnv }}</a>
-  </div>
-</template>
+<!--<template>-->
+<!--  <div class="ribbon" v-if="ribbonEnabled">-->
+<!--    <a href="">{{ ribbonEnv }}</a>-->
+<!--  </div>-->
+<!--</template>-->
 
 <script lang="ts" src="./ribbon.component.ts"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<!--<style scoped>-->
 /* ==========================================================================
 Development Ribbon
 ========================================================================== */
@@ -29,15 +29,15 @@ Development Ribbon
   opacity: 0.75;
 }
 
-.ribbon a {
-  color: #fff;
-  display: block;
-  font-weight: 400;
-  margin: 1px 0;
-  padding: 10px 50px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: 0 0 5px #444;
-  pointer-events: none;
-}
-</style>
+/*.ribbon a {*/
+/*  color: #fff;*/
+/*  display: block;*/
+/*  font-weight: 400;*/
+/*  margin: 1px 0;*/
+/*  padding: 10px 50px;*/
+/*  text-align: center;*/
+/*  text-decoration: none;*/
+/*  text-shadow: 0 0 5px #444;*/
+/*  pointer-events: none;*/
+/*}*/
+<!--</style>-->

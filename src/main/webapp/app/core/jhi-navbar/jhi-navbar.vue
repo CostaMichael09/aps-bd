@@ -27,7 +27,7 @@
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="th-list" />
-            <span class="no-bold">Entities</span>
+            <span class="no-bold">Entidades</span>
           </span>
           <entities-menu></entities-menu>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
@@ -43,35 +43,35 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="users-cog" />
-            <span class="no-bold">Administration</span>
+            <span class="no-bold">Administração</span>
           </span>
-          <b-dropdown-item to="/admin/user-management" active-class="active">
-            <font-awesome-icon icon="users" />
-            <span>User management</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/admin/metrics" active-class="active">
-            <font-awesome-icon icon="tachometer-alt" />
-            <span>Metrics</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/admin/health" active-class="active">
-            <font-awesome-icon icon="heart" />
-            <span>Health</span>
-          </b-dropdown-item>
+<!--          <b-dropdown-item to="/admin/user-management" active-class="active">-->
+<!--            <font-awesome-icon icon="users" />-->
+<!--            <span>User management</span>-->
+<!--          </b-dropdown-item>-->
+<!--          <b-dropdown-item to="/admin/metrics" active-class="active">-->
+<!--            <font-awesome-icon icon="tachometer-alt" />-->
+<!--            <span>Metrics</span>-->
+<!--          </b-dropdown-item>-->
+<!--          <b-dropdown-item to="/admin/health" active-class="active">-->
+<!--            <font-awesome-icon icon="heart" />-->
+<!--            <span>Health</span>-->
+<!--          </b-dropdown-item>-->
           <b-dropdown-item to="/admin/configuration" active-class="active">
-            <font-awesome-icon icon="cogs" />
-            <span>Configuration</span>
+           <font-awesome-icon icon="cogs" />
+           <span>Configuration</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/admin/logs" active-class="active">
-            <font-awesome-icon icon="tasks" />
-            <span>Logs</span>
-          </b-dropdown-item>
-          <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">
-            <font-awesome-icon icon="book" />
-            <span>API</span>
-          </b-dropdown-item>
+<!--          <b-dropdown-item to="/admin/logs" active-class="active">-->
+<!--            <font-awesome-icon icon="tasks" />-->
+<!--            <span>Logs</span>-->
+<!--          </b-dropdown-item>-->
+<!--          <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">-->
+<!--            <font-awesome-icon icon="book" />-->
+<!--            <span>API</span>-->
+<!--          </b-dropdown-item>-->
           <b-dropdown-item v-if="!inProduction" href="./h2-console/" target="_tab">
             <font-awesome-icon icon="database" />
-            <span>Database</span>
+            <span>Banco de dados</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
@@ -85,23 +85,23 @@
         >
           <span slot="button-content" class="navbar-dropdown-menu">
             <font-awesome-icon icon="user" />
-            <span class="no-bold"> Account </span>
+            <span class="no-bold"> Conta </span>
           </span>
           <b-dropdown-item data-cy="settings" to="/account/settings" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="wrench" />
-            <span>Settings</span>
+            <span>Configuração</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="passwordItem" to="/account/password" tag="b-dropdown-item" v-if="authenticated" active-class="active">
             <font-awesome-icon icon="lock" />
-            <span>Password</span>
+            <span>Senha</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="logout" v-if="authenticated" v-on:click="logout()" id="logout" active-class="active">
             <font-awesome-icon icon="sign-out-alt" />
-            <span>Sign out</span>
+            <span>Sair</span>
           </b-dropdown-item>
           <b-dropdown-item data-cy="login" v-if="!authenticated" v-on:click="openLogin()" id="login" active-class="active">
             <font-awesome-icon icon="sign-in-alt" />
-            <span>Sign in</span>
+            <span>Entrar</span>
           </b-dropdown-item>
           <b-dropdown-item
             data-cy="register"
@@ -112,7 +112,7 @@
             active-class="active"
           >
             <font-awesome-icon icon="user-plus" />
-            <span>Register</span>
+            <span>Registrar</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -155,16 +155,16 @@
   padding: 5px 15px;
 }
 
-.logo .logo-img {
-  height: 45px;
-  display: inline-block;
-  vertical-align: middle;
-  width: 70px;
-}
+/*.logo .logo-img {*/
+/*  height: 45px;*/
+/*  display: inline-block;*/
+/*  vertical-align: middle;*/
+/*  width: 70px;*/
+/*}*/
 
 .logo-img {
   height: 100%;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/unicarioca.jpg') no-repeat center center;
   background-size: contain;
   width: 100%;
   filter: drop-shadow(0 0 0.05rem white);

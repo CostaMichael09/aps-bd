@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2 id="configuration-page-heading" data-cy="configurationPageHeading">Configuration</h2>
+    <h2 id="configuration-page-heading" data-cy="configurationPageHeading">Configuração</h2>
 
     <div v-if="allConfiguration && configuration">
       <span>Filter (by prefix)</span> <input type="text" v-model="filtered" class="form-control" />
-      <h3>Spring configuration</h3>
+      <h3>Spring configuração</h3>
       <table class="table table-striped table-bordered table-responsive d-table" aria-describedby="Configuration">
         <thead>
           <tr>
@@ -37,8 +37,8 @@
         <table class="table table-sm table-striped table-bordered table-responsive d-table" aria-describedby="Properties">
           <thead>
             <tr>
-              <th class="w-40" scope="col">Property</th>
-              <th class="w-60" scope="col">Value</th>
+              <th class="w-40" scope="col">Propriedade</th>
+              <th class="w-60" scope="col">Valor</th>
             </tr>
           </thead>
           <tbody>

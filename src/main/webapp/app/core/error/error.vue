@@ -10,8 +10,8 @@
         <div v-if="errorMessage">
           <div class="alert alert-danger">{{ errorMessage }}</div>
         </div>
-        <div v-if="error403" class="alert alert-danger">You are not authorized to access this page.</div>
-        <div v-if="error404" class="alert alert-warning">The page you requested does not exist.</div>
+        <div v-if="error403" class="alert alert-danger">Você não está autorizado à acessar essa página .</div>
+        <div v-if="error404" class="alert alert-warning">A página que você solicitou não existe .</div>
       </div>
     </div>
   </div>
