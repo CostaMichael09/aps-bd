@@ -9,6 +9,18 @@ const Exame = () => import('@/entities/exame/exame.vue');
 const ExameUpdate = () => import('@/entities/exame/exame-update.vue');
 // prettier-ignore
 const ExameDetails = () => import('@/entities/exame/exame-details.vue');
+// prettier-ignore
+const Paciente = () => import('@/entities/paciente/paciente.vue');
+// prettier-ignore
+const PacienteUpdate = () => import('@/entities/paciente/paciente-update.vue');
+// prettier-ignore
+const PacienteDetails = () => import('@/entities/paciente/paciente-details.vue');
+// prettier-ignore
+const Medico = () => import('@/entities/medico/medico.vue');
+// prettier-ignore
+const MedicoUpdate = () => import('@/entities/medico/medico-update.vue');
+// prettier-ignore
+const MedicoDetails = () => import('@/entities/medico/medico-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -37,6 +49,54 @@ export default {
       path: 'exame/:exameId/view',
       name: 'ExameView',
       component: ExameDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'paciente',
+      name: 'Paciente',
+      component: Paciente,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'paciente/new',
+      name: 'PacienteCreate',
+      component: PacienteUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'paciente/:pacienteId/edit',
+      name: 'PacienteEdit',
+      component: PacienteUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'paciente/:pacienteId/view',
+      name: 'PacienteView',
+      component: PacienteDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'medico',
+      name: 'Medico',
+      component: Medico,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'medico/new',
+      name: 'MedicoCreate',
+      component: MedicoUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'medico/:medicoId/edit',
+      name: 'MedicoEdit',
+      component: MedicoUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'medico/:medicoId/view',
+      name: 'MedicoView',
+      component: MedicoDetails,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

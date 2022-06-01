@@ -6,6 +6,7 @@
     <div class="col-md-9">
       <h1 class="display-4">Bem-vindo a nossa APS!</h1>
       <p class="lead">Aluno: Michael Costa / Matricula: 2018200580</p>
+      <p class="lead">Aluno: Vinícius Lima / Matricula: 2018200264</p>
 
       <div>
         <div class="alert alert-success" v-if="authenticated">
@@ -26,26 +27,26 @@
         </div>
       </div>
 
-      <p>Turma:</p>
+      <p>Turma: 945 - DESENVOLVIMENTO DE APLICAÇÕES COM BANCO DE DADOS</p>
       <p>Professor: Marcelo Perantoni</p>
 
-<!--      <ul>-->
-<!--        <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>-->
-<!--        <li>-->
-<!--          <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer"-->
-<!--            >JHipster bug tracker</a-->
-<!--          >-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on Twitter</a>-->
-<!--        </li>-->
-<!--      </ul>-->
+      <!--      <ul>-->
+      <!--        <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>-->
+      <!--        <li>-->
+      <!--          <a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a>-->
+      <!--        </li>-->
+      <!--        <li>-->
+      <!--          <a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer"-->
+      <!--            >JHipster bug tracker</a-->
+      <!--          >-->
+      <!--        </li>-->
+      <!--        <li>-->
+      <!--          <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a>-->
+      <!--        </li>-->
+      <!--        <li>-->
+      <!--          <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on Twitter</a>-->
+      <!--        </li>-->
+      <!--      </ul>-->
 
       <p>
         <span>Codigo completo está no</span>
