@@ -2,24 +2,32 @@ package apsbanco.web.rest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import apsbanco.IntegrationTest;
 import apsbanco.domain.Exame;
 import apsbanco.repository.ExameRepository;
+import apsbanco.service.ExameService;
 import apsbanco.service.dto.ExameDTO;
 import apsbanco.service.mapper.ExameMapper;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.persistence.EntityManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,6 +37,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Integration tests for the {@link ExameResource} REST controller.
  */
 @IntegrationTest
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 class ExameResourceIT {
@@ -51,8 +60,14 @@ class ExameResourceIT {
     @Autowired
     private ExameRepository exameRepository;
 
+    @Mock
+    private ExameRepository exameRepositoryMock;
+
     @Autowired
     private ExameMapper exameMapper;
+
+    @Mock
+    private ExameService exameServiceMock;
 
     @Autowired
     private EntityManager em;
@@ -142,6 +157,24 @@ class ExameResourceIT {
             .andExpect(jsonPath("$.[*].tipo").value(hasItem(DEFAULT_TIPO)))
             .andExpect(jsonPath("$.[*].data").value(hasItem(DEFAULT_DATA.toString())))
             .andExpect(jsonPath("$.[*].nomedomedico").value(hasItem(DEFAULT_NOMEDOMEDICO)));
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllExamesWithEagerRelationshipsIsEnabled() throws Exception {
+        when(exameServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restExameMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(exameServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    void getAllExamesWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(exameServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restExameMockMvc.perform(get(ENTITY_API_URL + "?eagerload=true")).andExpect(status().isOk());
+
+        verify(exameServiceMock, times(1)).findAllWithEagerRelationships(any());
     }
 
     @Test

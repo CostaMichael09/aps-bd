@@ -23,6 +23,12 @@
             <column name="nomedomedico" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="medico_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="paciente_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="exame" columnName="data" columnDataType="${datetimeType}"/>

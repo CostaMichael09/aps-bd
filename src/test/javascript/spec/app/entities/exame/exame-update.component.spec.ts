@@ -12,6 +12,9 @@ import ExameUpdateComponent from '@/entities/exame/exame-update.vue';
 import ExameClass from '@/entities/exame/exame-update.component';
 import ExameService from '@/entities/exame/exame.service';
 
+import MedicoService from '@/entities/medico/medico.service';
+
+import PacienteService from '@/entities/paciente/paciente.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -43,6 +46,16 @@ describe('Component Tests', () => {
         provide: {
           exameService: () => exameServiceStub,
           alertService: () => new AlertService(),
+
+          medicoService: () =>
+            sinon.createStubInstance<MedicoService>(MedicoService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
+
+          pacienteService: () =>
+            sinon.createStubInstance<PacienteService>(PacienteService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
         },
       });
       comp = wrapper.vm;

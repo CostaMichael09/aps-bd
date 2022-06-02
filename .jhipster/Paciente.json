@@ -23,7 +23,14 @@
   "name": "Paciente",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "exame",
+      "otherEntityRelationshipName": "paciente",
+      "relationshipName": "exame",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": false,
   "service": "serviceClass"
 }

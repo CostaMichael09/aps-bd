@@ -89,6 +89,15 @@ public class ExameService {
     }
 
     /**
+     * Get all the exames with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<ExameDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return exameRepository.findAllWithEagerRelationships(pageable).map(exameMapper::toDto);
+    }
+
+    /**
      * Get one exame by id.
      *
      * @param id the id of the entity.
@@ -97,7 +106,7 @@ public class ExameService {
     @Transactional(readOnly = true)
     public Optional<ExameDTO> findOne(Long id) {
         log.debug("Request to get Exame : {}", id);
-        return exameRepository.findById(id).map(exameMapper::toDto);
+        return exameRepository.findOneWithEagerRelationships(id).map(exameMapper::toDto);
     }
 
     /**

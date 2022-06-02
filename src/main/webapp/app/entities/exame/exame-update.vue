@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="apsbdApp.exame.home.createOrEditLabel" data-cy="ExameCreateUpdateHeading">Crie ou edite seu exame</h2>
+        <h2 id="apsbdApp.exame.home.createOrEditLabel" data-cy="ExameCreateUpdateHeading">Criar ou editar Exame</h2>
         <div>
           <div class="form-group" v-if="exame.id">
             <label for="id">ID</label>
@@ -35,22 +35,48 @@
               />
             </div>
           </div>
+<!--          <div class="form-group">-->
+<!--            <label class="form-control-label" for="exame-nomedomedico">Nomedomedico</label>-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              class="form-control"-->
+<!--              name="nomedomedico"-->
+<!--              id="exame-nomedomedico"-->
+<!--              data-cy="nomedomedico"-->
+<!--              :class="{ valid: !$v.exame.nomedomedico.$invalid, invalid: $v.exame.nomedomedico.$invalid }"-->
+<!--              v-model="$v.exame.nomedomedico.$model"-->
+<!--            />-->
+<!--          </div>-->
           <div class="form-group">
-            <label class="form-control-label" for="exame-nomedomedico">Nomedomedico</label>
-            <input
-              type="text"
-              class="form-control"
-              name="nomedomedico"
-              id="exame-nomedomedico"
-              data-cy="nomedomedico"
-              :class="{ valid: !$v.exame.nomedomedico.$invalid, invalid: $v.exame.nomedomedico.$invalid }"
-              v-model="$v.exame.nomedomedico.$model"
-            />
+            <label class="form-control-label" for="exame-medico">Medico</label>
+            <select class="form-control" id="exame-medico" data-cy="medico" name="medico" v-model="exame.medico">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="exame.medico && medicoOption.id === exame.medico.id ? exame.medico : medicoOption"
+                v-for="medicoOption in medicos"
+                :key="medicoOption.id"
+              >
+                {{ medicoOption.nome }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="exame-paciente">Paciente</label>
+            <select class="form-control" id="exame-paciente" data-cy="paciente" name="paciente" v-model="exame.paciente">
+              <option v-bind:value="null"></option>
+              <option
+                v-bind:value="exame.paciente && pacienteOption.id === exame.paciente.id ? exame.paciente : pacienteOption"
+                v-for="pacienteOption in pacientes"
+                :key="pacienteOption.id"
+              >
+                {{ pacienteOption.nome }}
+              </option>
+            </select>
           </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" v-on:click="previousState()">
-            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancelar</span>
+            <font-awesome-icon icon="ban"></font-awesome-icon>&nbsp;<span>Cancel</span>
           </button>
           <button
             type="submit"
@@ -59,7 +85,7 @@
             :disabled="$v.exame.$invalid || isSaving"
             class="btn btn-primary"
           >
-            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Salvar</span>
+            <font-awesome-icon icon="save"></font-awesome-icon>&nbsp;<span>Save</span>
           </button>
         </div>
       </form>

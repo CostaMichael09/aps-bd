@@ -21,7 +21,7 @@
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && exames && exames.length === 0">
-      <span>Não existe exame(s)</span>
+      <span>Nenhum exame encontrado</span>
     </div>
     <div class="table-responsive" v-if="exames && exames.length > 0">
       <table class="table table-striped" aria-describedby="exames">
@@ -36,9 +36,17 @@
             <th scope="row" v-on:click="changeOrder('data')">
               <span>Data</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'data'"></jhi-sort-indicator>
             </th>
-            <th scope="row" v-on:click="changeOrder('nomedomedico')">
-              <span>Nomedomedico</span>
-              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nomedomedico'"></jhi-sort-indicator>
+<!--            <th scope="row" v-on:click="changeOrder('nomedomedico')">-->
+<!--              <span>Nomedomedico</span>-->
+<!--              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nomedomedico'"></jhi-sort-indicator>-->
+<!--            </th>-->
+            <th scope="row" v-on:click="changeOrder('medico.nome')">
+              <span>Medico</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'medico.nome'"></jhi-sort-indicator>
+            </th>
+            <th scope="row" v-on:click="changeOrder('paciente.nome')">
+              <span>Paciente</span>
+              <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'paciente.nome'"></jhi-sort-indicator>
             </th>
             <th scope="row"></th>
           </tr>
@@ -50,13 +58,25 @@
 <!--            </td>-->
             <td>{{ exame.tipo }}</td>
             <td>{{ exame.data | formatDate }}</td>
-            <td>{{ exame.nomedomedico }}</td>
+<!--            <td>{{ exame.nomedomedico }}</td>-->
+            <td>
+              <div v-if="exame.medico">
+                <router-link :to="{ name: 'MedicoView', params: { medicoId: exame.medico.id } }">{{ exame.medico.nome }}</router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="exame.paciente">
+                <router-link :to="{ name: 'PacienteView', params: { pacienteId: exame.paciente.id } }">{{
+                  exame.paciente.nome
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'ExameView', params: { exameId: exame.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Ver detalhes</span>
+                    <span class="d-none d-md-inline">Detalhes</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'ExameEdit', params: { exameId: exame.id } }" custom v-slot="{ navigate }">
@@ -73,7 +93,7 @@
                   v-b-modal.removeEntity
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
-                  <span class="d-none d-md-inline">Excluir</span>
+                  <span class="d-none d-md-inline">Deletar</span>
                 </b-button>
               </div>
             </td>
@@ -83,10 +103,10 @@
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
       <span slot="modal-title"
-        ><span id="apsbdApp.exame.delete.question" data-cy="exameDeleteDialogHeading">Confirm delete operation</span></span
+        ><span id="apsbdApp.exame.delete.question" data-cy="exameDeleteDialogHeading">Confirmar?</span></span
       >
       <div class="modal-body">
-        <p id="jhi-delete-exame-heading">Você tem certeza que deseja deletar esse exame?</p>
+        <p id="jhi-delete-exame-heading">Tem certeza que deseja apagar esse Exame?</p>
       </div>
       <div slot="modal-footer">
         <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>

@@ -9,6 +9,7 @@ import MedicoUpdateComponent from '@/entities/medico/medico-update.vue';
 import MedicoClass from '@/entities/medico/medico-update.component';
 import MedicoService from '@/entities/medico/medico.service';
 
+import ExameService from '@/entities/exame/exame.service';
 import AlertService from '@/shared/alert/alert.service';
 
 const localVue = createLocalVue();
@@ -40,6 +41,11 @@ describe('Component Tests', () => {
         provide: {
           medicoService: () => medicoServiceStub,
           alertService: () => new AlertService(),
+
+          exameService: () =>
+            sinon.createStubInstance<ExameService>(ExameService, {
+              retrieve: sinon.stub().resolves({}),
+            } as any),
         },
       });
       comp = wrapper.vm;

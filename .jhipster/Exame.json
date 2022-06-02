@@ -23,7 +23,20 @@
   "name": "Exame",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "medico",
+      "relationshipName": "medico",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nome",
+      "otherEntityName": "paciente",
+      "relationshipName": "paciente",
+      "relationshipType": "many-to-one"
+    }
+  ],
   "searchEngine": false,
   "service": "serviceClass"
 }

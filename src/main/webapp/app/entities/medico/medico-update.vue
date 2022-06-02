@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-8">
       <form name="editForm" role="form" novalidate v-on:submit.prevent="save()">
-        <h2 id="apsbdApp.medico.home.createOrEditLabel" data-cy="MedicoCreateUpdateHeading">Create or edit a Medico</h2>
+        <h2 id="apsbdApp.medico.home.createOrEditLabel" data-cy="MedicoCreateUpdateHeading">Criar ou editar Medico</h2>
         <div>
           <div class="form-group" v-if="medico.id">
             <label for="id">ID</label>

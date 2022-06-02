@@ -5,6 +5,12 @@ import { DATE_TIME_LONG_FORMAT } from '@/shared/date/filters';
 
 import AlertService from '@/shared/alert/alert.service';
 
+import MedicoService from '@/entities/medico/medico.service';
+import { IMedico } from '@/shared/model/medico.model';
+
+import PacienteService from '@/entities/paciente/paciente.service';
+import { IPaciente } from '@/shared/model/paciente.model';
+
 import { IExame, Exame } from '@/shared/model/exame.model';
 import ExameService from './exame.service';
 
@@ -24,6 +30,14 @@ export default class ExameUpdate extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
 
   public exame: IExame = new Exame();
+
+  @Inject('medicoService') private medicoService: () => MedicoService;
+
+  public medicos: IMedico[] = [];
+
+  @Inject('pacienteService') private pacienteService: () => PacienteService;
+
+  public pacientes: IPaciente[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -32,6 +46,7 @@ export default class ExameUpdate extends Vue {
       if (to.params.exameId) {
         vm.retrieveExame(to.params.exameId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -127,5 +142,16 @@ export default class ExameUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.medicoService()
+      .retrieve()
+      .then(res => {
+        this.medicos = res.data;
+      });
+    this.pacienteService()
+      .retrieve()
+      .then(res => {
+        this.pacientes = res.data;
+      });
+  }
 }

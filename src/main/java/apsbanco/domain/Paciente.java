@@ -1,6 +1,9 @@
 package apsbanco.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.*;
 
 /**
@@ -25,6 +28,10 @@ public class Paciente implements Serializable {
 
     @Column(name = "telefone")
     private String telefone;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonIgnoreProperties(value = { "medico", "paciente" }, allowSetters = true)
+    private Set<Exame> exames = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -78,6 +85,37 @@ public class Paciente implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Set<Exame> getExames() {
+        return this.exames;
+    }
+
+    public void setExames(Set<Exame> exames) {
+        if (this.exames != null) {
+            this.exames.forEach(i -> i.setPaciente(null));
+        }
+        if (exames != null) {
+            exames.forEach(i -> i.setPaciente(this));
+        }
+        this.exames = exames;
+    }
+
+    public Paciente exames(Set<Exame> exames) {
+        this.setExames(exames);
+        return this;
+    }
+
+    public Paciente addExame(Exame exame) {
+        this.exames.add(exame);
+        exame.setPaciente(this);
+        return this;
+    }
+
+    public Paciente removeExame(Exame exame) {
+        this.exames.remove(exame);
+        exame.setPaciente(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

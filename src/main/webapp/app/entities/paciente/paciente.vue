@@ -14,22 +14,22 @@
             class="btn btn-primary jh-create-entity create-paciente"
           >
             <font-awesome-icon icon="plus"></font-awesome-icon>
-            <span> Criar um novo Paciente </span>
+            <span> Criar novo paciente </span>
           </button>
         </router-link>
       </div>
     </h2>
     <br />
     <div class="alert alert-warning" v-if="!isFetching && pacientes && pacientes.length === 0">
-      <span>Não encontrado</span>
+      <span>Nao há nenhum paciente</span>
     </div>
     <div class="table-responsive" v-if="pacientes && pacientes.length > 0">
       <table class="table table-striped" aria-describedby="pacientes">
         <thead>
           <tr>
-            <!--            <th scope="row" v-on:click="changeOrder('id')">-->
-            <!--              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>-->
-            <!--            </th>-->
+<!--            <th scope="row" v-on:click="changeOrder('id')">-->
+<!--              <span>ID</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'id'"></jhi-sort-indicator>-->
+<!--            </th>-->
             <th scope="row" v-on:click="changeOrder('nome')">
               <span>Nome</span> <jhi-sort-indicator :current-order="propOrder" :reverse="reverse" :field-name="'nome'"></jhi-sort-indicator>
             </th>
@@ -45,9 +45,9 @@
         </thead>
         <tbody>
           <tr v-for="paciente in pacientes" :key="paciente.id" data-cy="entityTable">
-            <!--            <td>-->
-            <!--              <router-link :to="{ name: 'PacienteView', params: { pacienteId: paciente.id } }">{{ paciente.id }}</router-link>-->
-            <!--            </td>-->
+<!--            <td>-->
+<!--              <router-link :to="{ name: 'PacienteView', params: { pacienteId: paciente.id } }">{{ paciente.id }}</router-link>-->
+<!--            </td>-->
             <td>{{ paciente.nome }}</td>
             <td>{{ paciente.cpf }}</td>
             <td>{{ paciente.telefone }}</td>
@@ -56,7 +56,7 @@
                 <router-link :to="{ name: 'PacienteView', params: { pacienteId: paciente.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
-                    <span class="d-none d-md-inline">Visualizar</span>
+                    <span class="d-none d-md-inline">Detalhes</span>
                   </button>
                 </router-link>
                 <router-link :to="{ name: 'PacienteEdit', params: { pacienteId: paciente.id } }" custom v-slot="{ navigate }">
@@ -82,12 +82,14 @@
       </table>
     </div>
     <b-modal ref="removeEntity" id="removeEntity">
-      <span slot="modal-title"><span id="apsbdApp.paciente.delete.question" data-cy="pacienteDeleteDialogHeading">Confirmar</span></span>
+      <span slot="modal-title"
+        ><span id="apsbdApp.paciente.delete.question" data-cy="pacienteDeleteDialogHeading">Confirmar</span></span
+      >
       <div class="modal-body">
         <p id="jhi-delete-paciente-heading">Tem certeza que deseja apagar esse Paciente?</p>
       </div>
       <div slot="modal-footer">
-        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancelar</button>
+        <button type="button" class="btn btn-secondary" v-on:click="closeDialog()">Cancel</button>
         <button
           type="button"
           class="btn btn-primary"

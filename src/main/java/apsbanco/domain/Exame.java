@@ -1,5 +1,6 @@
 package apsbanco.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
 import javax.persistence.*;
@@ -26,6 +27,14 @@ public class Exame implements Serializable {
 
     @Column(name = "nomedomedico")
     private String nomedomedico;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "exames" }, allowSetters = true)
+    private Medico medico;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "exames" }, allowSetters = true)
+    private Paciente paciente;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -79,6 +88,32 @@ public class Exame implements Serializable {
 
     public void setNomedomedico(String nomedomedico) {
         this.nomedomedico = nomedomedico;
+    }
+
+    public Medico getMedico() {
+        return this.medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public Exame medico(Medico medico) {
+        this.setMedico(medico);
+        return this;
+    }
+
+    public Paciente getPaciente() {
+        return this.paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Exame paciente(Paciente paciente) {
+        this.setPaciente(paciente);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

@@ -23,7 +23,14 @@
   "name": "Medico",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "exame",
+      "otherEntityRelationshipName": "medico",
+      "relationshipName": "exame",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "searchEngine": false,
   "service": "serviceClass"
 }

@@ -17,6 +17,10 @@ public class ExameDTO implements Serializable {
 
     private String nomedomedico;
 
+    private MedicoDTO medico;
+
+    private PacienteDTO paciente;
+
     public Long getId() {
         return id;
     }
@@ -49,6 +53,22 @@ public class ExameDTO implements Serializable {
         this.nomedomedico = nomedomedico;
     }
 
+    public MedicoDTO getMedico() {
+        return medico;
+    }
+
+    public void setMedico(MedicoDTO medico) {
+        this.medico = medico;
+    }
+
+    public PacienteDTO getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(PacienteDTO paciente) {
+        this.paciente = paciente;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -78,6 +98,8 @@ public class ExameDTO implements Serializable {
             ", tipo='" + getTipo() + "'" +
             ", data='" + getData() + "'" +
             ", nomedomedico='" + getNomedomedico() + "'" +
+            ", medico=" + getMedico() +
+            ", paciente=" + getPaciente() +
             "}";
     }
 }

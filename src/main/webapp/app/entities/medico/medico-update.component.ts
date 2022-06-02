@@ -2,6 +2,9 @@ import { Component, Vue, Inject } from 'vue-property-decorator';
 
 import AlertService from '@/shared/alert/alert.service';
 
+import ExameService from '@/entities/exame/exame.service';
+import { IExame } from '@/shared/model/exame.model';
+
 import { IMedico, Medico } from '@/shared/model/medico.model';
 import MedicoService from './medico.service';
 
@@ -21,6 +24,10 @@ export default class MedicoUpdate extends Vue {
   @Inject('alertService') private alertService: () => AlertService;
 
   public medico: IMedico = new Medico();
+
+  @Inject('exameService') private exameService: () => ExameService;
+
+  public exames: IExame[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -29,6 +36,7 @@ export default class MedicoUpdate extends Vue {
       if (to.params.medicoId) {
         vm.retrieveMedico(to.params.medicoId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -100,5 +108,11 @@ export default class MedicoUpdate extends Vue {
     this.$router.go(-1);
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.exameService()
+      .retrieve()
+      .then(res => {
+        this.exames = res.data;
+      });
+  }
 }
